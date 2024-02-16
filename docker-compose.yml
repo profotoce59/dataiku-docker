@@ -1,0 +1,16 @@
+version: '3'
+services:
+  dataiku-dss:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME_NON_ROOT: ${USERNAME_NON_ROOT}
+        PASSWORD_NON_ROOT: ${PASSWORD_NON_ROOT}
+    ports:
+      - "11000:11000"
+    volumes:
+      - dss-data:/home/dataiku/dss
+volumes:
+  dss-data:
+  #garder les données entre les redémarrages
